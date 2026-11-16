@@ -68,18 +68,20 @@ const About = () => {
                     <div className="space-y-4 text-gray-400">
 
                         <p className="text-lg leading-relaxed text-gray-300">
-                            I'm a Software Engineering student
-                            passionate about transforming ideas
-                            into useful digital experiences.
+                            I'm a Software Engineering student with a passion
+                            for building reliable, scalable, and user-friendly
+                            applications. I enjoy solving complex problems,
+                            exploring new technologies, and continuously
+                            improving my software development skills.
                         </p>
 
-                        <p className="leading-relaxed">
+                        {/* <p className="leading-relaxed">
                             I enjoy working with Java, React and
                             modern development technologies to
                             build web and mobile applications.
                             I'm continuously improving my skills
                             through hands-on projects and learning.
-                        </p>
+                        </p> */}
 
                         <a
                             href="#projects"
