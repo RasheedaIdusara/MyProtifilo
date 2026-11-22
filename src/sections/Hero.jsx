@@ -1,7 +1,28 @@
+import { motion } from "framer-motion";
 import profileImage from "../assets/cinedark.png";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import TechStack from "../components/TechStack";
 import { contactInfo } from "../data/contact";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 const Hero = () => {
   return (
@@ -9,95 +30,136 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen overflow-hidden bg-[#0b141a] pt-32 text-white"
     >
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute top-1/4 right-1/4 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
+      {/* Animated Background Glow */}
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.18, 0.1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute top-1/4 right-1/4 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl"
+      />
 
-      {/* Main Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Hero Grid */}
         <div className="grid min-h-[65vh] grid-cols-1 items-center gap-12 md:grid-cols-2">
-          {/* Left Side */}
-          <div className="space-y-7">
-            <span className="inline-block rounded-full border border-teal-500/20 bg-teal-500/10 px-4 py-2 text-sm text-teal-400">
+          {/* Left Side - Staggered Entrance */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-7"
+          >
+            <motion.span
+              variants={itemVariants}
+              className="inline-block rounded-full border border-teal-500/20 bg-teal-500/10 px-4 py-2 text-sm text-teal-400"
+            >
               Software Engineering Student
-            </span>
+            </motion.span>
 
-            <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl"
+            >
               Building <span className="text-teal-400">software</span>
               <br />
               that makes an
               <br />
               <span className="font-serif italic">impact.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="max-w-lg text-lg leading-relaxed text-gray-400">
+            <motion.p
+              variants={itemVariants}
+              className="max-w-lg text-lg leading-relaxed text-gray-400"
+            >
               Hi, I'm Rasheeda — a software engineering student passionate about
               building modern, scalable and user-friendly applications.
-            </p>
+            </motion.p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
-              <a
+            {/* Action Buttons with Spring Physics */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <motion.a
                 href="#contact"
-                className="rounded-full bg-teal-500 px-7 py-3 font-medium text-white transition-colors hover:bg-teal-400"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="group inline-flex items-center gap-2 rounded-full bg-teal-500 px-7 py-3 font-medium text-white transition-colors hover:bg-teal-400"
               >
-                Contact Me →
-              </a>
+                Contact Me
+                <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </motion.a>
 
               {contactInfo.resumeUrl && (
-                <a
+                <motion.a
                   href={contactInfo.resumeUrl}
                   download
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   className="rounded-full border border-white/15 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-teal-400/40 hover:text-white"
                 >
                   ↓ Download CV
-                </a>
+                </motion.a>
               )}
-            </div>
+            </motion.div>
 
-            {/* Social Links (Connected to contact.js) */}
-            <div className="flex items-center gap-5 pt-1">
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-5 pt-1"
+            >
               <span className="text-sm text-gray-500">Connect</span>
 
               {contactInfo.github && (
-                <a
+                <motion.a
+                  whileHover={{ y: -3, scale: 1.1 }}
                   href={contactInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit my GitHub profile"
-                  className="text-gray-400 transition-colors duration-300 hover:text-teal-400"
+                  className="text-gray-400 transition-colors hover:text-teal-400"
                 >
                   <FaGithub size={20} />
-                </a>
+                </motion.a>
               )}
 
               {contactInfo.linkedin && (
-                <a
+                <motion.a
+                  whileHover={{ y: -3, scale: 1.1 }}
                   href={contactInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit my LinkedIn profile"
-                  className="text-gray-400 transition-colors duration-300 hover:text-teal-400"
+                  className="text-gray-400 transition-colors hover:text-teal-400"
                 >
                   <FaLinkedinIn size={20} />
-                </a>
+                </motion.a>
               )}
 
               {contactInfo.email && (
-                <a
+                <motion.a
+                  whileHover={{ y: -3, scale: 1.1 }}
                   href={`mailto:${contactInfo.email}`}
                   aria-label="Send me an email"
-                  className="text-gray-400 transition-colors duration-300 hover:text-teal-400"
+                  className="text-gray-400 transition-colors hover:text-teal-400"
                 >
                   <FaEnvelope size={20} />
-                </a>
+                </motion.a>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Side */}
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-full max-w-sm">
+          {/* Right Side - Entrance + Continuous Gentle Float */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center md:justify-end"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full max-w-sm"
+            >
               <div className="absolute -inset-3 rounded-3xl bg-teal-500/15 blur-2xl" />
 
               <img
@@ -106,19 +168,23 @@ const Hero = () => {
                 className="relative aspect-[4/5] w-full rounded-2xl border border-teal-500/20 object-cover shadow-2xl"
               />
 
-              {/* Availability Badge with Live Pulse */}
-              <div className="absolute -bottom-4 right-2 flex items-center gap-2.5 rounded-full border border-white/10 bg-[#101f24] px-5 py-3 text-sm shadow-xl">
+              {/* Availability Badge */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.65, duration: 0.5 }}
+                className="absolute -bottom-4 right-2 flex items-center gap-2.5 rounded-full border border-white/10 bg-[#101f24] px-5 py-3 text-sm shadow-xl"
+              >
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
                 </span>
                 <span>{contactInfo.availability}</span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Animated Technology Stack */}
         <TechStack />
       </div>
     </section>

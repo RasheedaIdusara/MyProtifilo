@@ -1,3 +1,4 @@
+import { MotionConfig } from "framer-motion";
 import NavBar from "./layouts/NavBar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -8,6 +9,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <div className="bg-[#0b141a] text-white selection:bg-teal-500/30 selection:text-teal-200">
       <NavBar />
       <main>
@@ -19,6 +21,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </MotionConfig>
   );
 }
 
