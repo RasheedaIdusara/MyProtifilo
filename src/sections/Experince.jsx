@@ -13,8 +13,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-[#0b141a] py-24 text-white sm:py-28"
-    >
+      className="relative isolate scroll-mt-24 overflow-hidden bg-[#0e1b21] py-24 text-white sm:py-28"   >
       {/* Background Glow */}
       <div
         aria-hidden="true"
