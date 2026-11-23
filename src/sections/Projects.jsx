@@ -10,6 +10,7 @@ import {
 } from "react-icons/fi";
 import { projects } from "../data/projects";
 import { Reveal, SpotlightCard } from "../components/MotionPrimitives";
+import ProjectModal from "../components/ProjectModal";
 
 const projectIcons = {
   mobile: FiSmartphone,
@@ -19,6 +20,7 @@ const projectIcons = {
 
 const Projects = () => {
   const [selectedTag, setSelectedTag] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const categories = ["All", ...new Set(projects.map((p) => p.tag))];
 
@@ -47,8 +49,8 @@ const Projects = () => {
               </h2>
 
               <p className="mt-5 max-w-xl leading-relaxed text-gray-400">
-                A selection of projects where I explore software engineering
-                concepts, solve practical problems, and build applications.
+                Click on any project card to explore full details, screenshots,
+                and upcoming updates.
               </p>
             </div>
 
@@ -58,7 +60,7 @@ const Projects = () => {
           </div>
         </Reveal>
 
-        {/* Category Filter Tabs with Sliding Pill */}
+        {/* Category Filter Tabs */}
         <Reveal delay={0.1}>
           <div className="mb-10 flex flex-wrap gap-2">
             {categories.map((cat) => {
@@ -88,7 +90,7 @@ const Projects = () => {
           </div>
         </Reveal>
 
-        {/* Projects Grid with Layout Transitions */}
+        {/* Projects Grid */}
         <motion.div layout className="grid gap-5 lg:grid-cols-2">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => {
@@ -102,11 +104,12 @@ const Projects = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className={
+                  onClick={() => setSelectedProject(project)}
+                  className={`cursor-pointer ${
                     project.featured && selectedTag === "All"
                       ? "lg:col-span-2"
                       : ""
-                  }
+                  }`}
                 >
                   <SpotlightCard
                     className={`group flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-[#112329] p-6 transition-colors duration-300 hover:border-teal-400/40 hover:shadow-xl hover:shadow-teal-900/15 sm:p-8 ${
@@ -119,21 +122,29 @@ const Projects = () => {
                     />
 
                     <div className="relative">
+                      {/* Top Row */}
                       <div className="mb-8 flex items-start justify-between">
                         <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-teal-400/15 bg-teal-400/10 text-teal-400 transition-transform duration-300 group-hover:scale-110">
                           <Icon size={27} aria-hidden="true" />
                         </div>
 
-                        <span className="text-sm font-medium text-gray-500">
-                          / {project.number}
-                        </span>
+                        <div className="flex items-center gap-3">
+                          <span className="inline-flex items-center gap-1 rounded-full border border-teal-400/20 bg-teal-400/10 px-3 py-1 text-xs font-medium text-teal-300 transition-colors group-hover:bg-teal-500 group-hover:text-white">
+                            {project.hasDetails ? "View Details" : "Coming Soon"}
+                            <FiArrowUpRight size={14} />
+                          </span>
+
+                          <span className="text-sm font-medium text-gray-500">
+                            / {project.number}
+                          </span>
+                        </div>
                       </div>
 
                       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                         {project.category}
                       </p>
 
-                      <h3 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                      <h3 className="mb-4 text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-teal-300 sm:text-3xl">
                         {project.title}
                       </h3>
 
@@ -178,6 +189,7 @@ const Projects = () => {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-medium text-gray-200 transition-colors hover:border-teal-400/50 hover:text-teal-400"
                           >
                             <FiGithub size={15} />
@@ -192,6 +204,7 @@ const Projects = () => {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-1.5 rounded-xl bg-teal-500/15 px-4 py-2 text-xs font-medium text-teal-300 transition-colors hover:bg-teal-500 hover:text-white"
                           >
                             Live Demo
@@ -207,6 +220,12 @@ const Projects = () => {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Project Details / Coming Soon Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };
