@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
+  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
@@ -8,7 +9,7 @@ const navLinks = [
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("#home");
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const NavBar = () => {
       }
 
       // Active section detection
-      const sections = ["about", "projects", "experience", "contact"];
+      const sections = ["home", "about", "projects", "experience", "contact"];
       const scrollPosition = window.scrollY + 180;
 
       for (const id of sections) {
@@ -35,7 +36,6 @@ const NavBar = () => {
           }
         }
       }
-      if (window.scrollY < 300) setActiveSection("");
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

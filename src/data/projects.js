@@ -1,5 +1,7 @@
 // import smartify1 from "../assets/projects/smartify-1.png";
 // import smartify2 from "../assets/projects/smartify-2.png";
+// import globaltrade1 from "../assets/projects/globaltrade-1.png";
+// import smartcity1 from "../assets/projects/smartcity-1.png";
 
 export const projects = [
   {
@@ -8,26 +10,37 @@ export const projects = [
     title: "Smartify Laptop & Mobile",
     category: "Mobile Commerce Application",
     tag: "Mobile",
-    hasDetails: true, // විස්තර තියෙන නිසා true
+    hasDetails: true,
     description:
-      "An Android commerce application for laptops and mobile devices, featuring product browsing, configurable variants, cart management, ordering, and administration.",
+      "A secure Android M-Commerce application and web admin portal for laptops and smartphones, featuring dynamic variant pricing, PayHere payments, and Google Maps delivery routing.",
     overview:
-      "Smartify was built to streamline mobile electronics shopping on Android. Users can filter devices by specifications, choose RAM/storage variants dynamically, track real-time order statuses, while admins manage stock through a dedicated panel.",
+      "Smartify was built to eliminate fraud and disorganized listings common on informal marketplaces by centralizing laptop and smartphone shopping on Android. Users can customize RAM, storage, and color variants with real-time price updates, pin delivery locations on Google Maps, pay in-app via PayHere, and trigger instant support chat by shaking their device, while admins manage inventory and routes through a Tomcat-backed web panel.",
     images: [
       // smartify1,
       // smartify2,
-      // (Images දානකම් හිස්ව තිබුණත් code එක crash වෙන්නේ නැහැ)
     ],
-    technologies: ["Java", "Android", "Firebase", "REST APIs"],
+    technologies: [
+      "Java",
+      "Android SDK",
+      "Firebase",
+      "SQLite",
+      "Google Maps API",
+      "PayHere",
+      "REST APIs",
+      "Apache Tomcat",
+    ],
     highlights: [
-      "Product variants and cart management",
-      "Order processing and tracking",
-      "Admin management features",
+      "Dynamic product variants (RAM, storage, color) with automated price calculation",
+      "Hybrid storage combining Firebase Firestore cloud sync and local SQLite caching",
+      "Google Maps & Directions API integration with delivery route Polylines",
+      "In-app PayHere payment gateway integration and real-time order tracking",
+      "Shake-gesture support chat trigger, push notifications, and direct support calling",
+      "Full-stack web admin dashboard powered by a Java REST API and Tailwind CSS",
     ],
     futureUpdates: [
-      "Integrating Stripe / PayHere online payment gateway",
-      "Adding push notifications for order status updates",
-      "Dark mode UI theme support for Android app",
+      "Migrating PayHere payment gateway from sandbox to live production mode",
+      "Offline product catalog caching for low-connectivity environments",
+      "Dark mode UI theme support across the Android application",
     ],
     githubUrl: "https://github.com/RasheedaIdusara",
     liveUrl: "",
@@ -40,19 +53,42 @@ export const projects = [
     title: "GlobalTrade",
     category: "Enterprise Web Application",
     tag: "Enterprise",
-    hasDetails: false, // විස්තර තාම දාලා නැති නිසා click කළාම "Coming Soon" පෙන්නයි
+    hasDetails: true,
     description:
-      "A supply chain management application developed with a modular Jakarta EE architecture and PostgreSQL database integration.",
-    technologies: ["Java", "Jakarta EE", "PostgreSQL", "JPA"],
+      "An enterprise supply chain management system built with a multi-module Jakarta EE architecture, automating shipments, warehouse inventory, customs clearance, and vendor tracking.",
+    overview:
+      "GlobalTrade centralizes end-to-end international trade operations across suppliers, purchase orders, shipments, warehouses, and customs clearance. Engineered as a multi-module Maven EAR application deployed on GlassFish 7 with PostgreSQL, it leverages EJB timers, asynchronous JMS messaging, container-managed transactions, and stateless JWT security for reliable enterprise workflows.",
+    images: [
+      // globaltrade1,
+    ],
+    technologies: [
+      "Java",
+      "Jakarta EE",
+      "EJB 4.0",
+      "GlassFish 7",
+      "PostgreSQL",
+      "JPA / Hibernate",
+      "JAX-RS",
+      "JMS",
+      "JWT",
+      "JSP",
+    ],
     highlights: [
-      "Multi-module application architecture",
-      "User and role management",
-      "Database persistence and transactions",
+      "Multi-module Maven EAR architecture (core, ejb, web, ear) on GlassFish 7",
+      "4 automated EJB Timer Services monitoring delayed customs, low stock, shipments, and vendor KPIs",
+      "Asynchronous email alerting using JMS Producers and Message-Driven Beans (MDBs)",
+      "Container-Managed Transactions (REQUIRED & REQUIRES_NEW) with custom @Audited interceptors",
+      "Stateless JWT cookie authentication and Role-Based Access Control (RBAC) across 5 user roles",
+    ],
+    futureUpdates: [
+      "Interactive analytics dashboard with real-time supply chain KPI charts",
+      "Automated PDF invoice and customs clearance document generation",
+      "Docker containerization for GlassFish and PostgreSQL deployment",
     ],
     githubUrl: "https://github.com/RasheedaIdusara",
     liveUrl: "",
     icon: "layers",
-    featured: false,
+    featured: true,
   },
   {
     id: "smartcity360",
@@ -60,18 +96,80 @@ export const projects = [
     title: "SmartCity360",
     category: "Software Design Patterns",
     tag: "Systems",
-    hasDetails: false, // Coming Soon පෙන්නයි
+    hasDetails: true,
     description:
-      "A Java-based smart-city system exploring reusable design patterns for infrastructure management, security, and service workflows.",
-    technologies: ["Java", "SQLite", "OOP", "Design Patterns"],
+      "A modular JavaFX smart-city management suite applying five GoF Object-Oriented Design Patterns to solve urban energy security, power grid control, and policy evaluation.",
+    overview:
+      "SmartCity360 is a Java 17 and JavaFX desktop simulation built to demonstrate clean software architecture and reusable Object-Oriented Design Patterns in real-world urban infrastructure. Backed by SQLite persistence, each subsystem solves a distinct engineering challenge ranging from stream encryption and hierarchical grid control to memory optimization for thousands of IoT devices.",
+    images: [
+      // smartcity1,
+    ],
+    technologies: [
+      "Java 17",
+      "JavaFX",
+      "FXML / CSS",
+      "SQLite",
+      "JDBC / DAO",
+      "Maven",
+      "OOP Design Patterns",
+    ],
     highlights: [
-      "Decorator and Composite patterns",
-      "Chain of Responsibility",
-      "Flyweight and Interpreter patterns",
+      "Decorator Pattern: Runtime authentication, GZIP compression, and AES-GCM encryption on energy meter streams",
+      "Composite Pattern: Recursive power shutdowns and usage aggregation across City → District → Street → Building",
+      "Chain of Responsibility: Automated citizen complaint escalation across LocalStaff, Supervisor, and CityManager",
+      "Flyweight Pattern: Memory optimization for 10,000+ streetlight instances via shared hardware state caching",
+      "Interpreter Pattern: Custom DSL expression parser for dynamically evaluating city noise and parking policies",
+    ],
+    futureUpdates: [
+      "Real-time IoT sensor data streaming via MQTT integration",
+      "Interactive city map visualization for streetlight and power grid states",
+      "Exportable audit and energy consumption reports in CSV/PDF formats",
     ],
     githubUrl: "https://github.com/RasheedaIdusara",
     liveUrl: "",
     icon: "cpu",
+    featured: false,
+  },
+  {
+    id: "vibechat",
+    number: "04",
+    title: "VibeChat — Real-Time Messaging App",
+    category: "Cross-Platform Mobile Application",
+    tag: "Mobile",
+    hasDetails: true,
+    description:
+      "A cross-platform real-time chat mobile application built with React Native and TypeScript, powered by a custom Java Servlet, Hibernate ORM, and WebSocket backend.",
+    overview:
+      "VibeChat is a full-stack real-time messaging platform engineered for Android and iOS using React Native and TypeScript. Unlike apps relying on third-party BaaS tools, VibeChat runs on a custom Java backend utilizing WebSockets for instant bidirectional messaging, RESTful Servlets for authentication and history retrieval, and Hibernate ORM with MySQL for persistent storage.",
+    images: [
+      // vibechat1,
+      // vibechat2,
+    ],
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "Java Servlets",
+      "WebSocket",
+      "Hibernate ORM",
+      "MySQL",
+      "NativeWind",
+      "GlassFish",
+    ],
+    highlights: [
+      "Real-time bidirectional messaging via custom Java WebSocket endpoints with ConcurrentHashMap session tracking",
+      "Cross-platform mobile UI built with React Native, TypeScript, NativeWind, and React Navigation",
+      "Hybrid networking combining WebSockets for live chat and REST APIs (Fetch + Gson) for auth and history",
+      "Live message delivery statuses (Sent, Delivered, Read), unread counters, and user online/typing indicators",
+      "Includes contact discovery, avatar selection (Expo ImagePicker), Status updates, and Call history screens",
+    ],
+    futureUpdates: [
+      "Push notifications for incoming background messages",
+      "Real-time voice and video calling integration",
+      "Group chat support and rich media/file sharing",
+    ],
+    githubUrl: "https://github.com/RasheedaIdusara",
+    liveUrl: "",
+    icon: "mobile",
     featured: false,
   },
 ];
