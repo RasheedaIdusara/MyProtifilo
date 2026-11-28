@@ -70,11 +70,10 @@ const Projects = () => {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedTag(cat)}
-                  className={`relative rounded-full px-4 py-2 text-xs font-medium transition-colors ${
-                    isActive
+                  className={`relative rounded-full px-4 py-2 text-xs font-medium transition-colors ${isActive
                       ? "text-white"
                       : "border border-white/10 bg-white/[0.03] text-gray-400 hover:border-teal-400/40 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -105,16 +104,14 @@ const Projects = () => {
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => setSelectedProject(project)}
-                  className={`cursor-pointer ${
-                    project.featured && selectedTag === "All"
+                  className={`cursor-pointer ${project.featured && selectedTag === "All"
                       ? "lg:col-span-2"
                       : ""
-                  }`}
+                    }`}
                 >
                   <SpotlightCard
-                    className={`group flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-[#112329] p-6 transition-colors duration-300 hover:border-teal-400/40 hover:shadow-xl hover:shadow-teal-900/15 sm:p-8 ${
-                      project.featured && selectedTag === "All" ? "lg:p-10" : ""
-                    }`}
+                    className={`group flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-[#112329] p-6 transition-colors duration-300 hover:border-teal-400/40 hover:shadow-xl hover:shadow-teal-900/15 sm:p-8 ${project.featured && selectedTag === "All" ? "lg:p-10" : ""
+                      }`}
                   >
                     <div
                       aria-hidden="true"
@@ -122,6 +119,19 @@ const Projects = () => {
                     />
 
                     <div className="relative">
+
+                      {/* Project Cover Image */}
+                      {project.coverImage && (
+                        <div className="mb-6 aspect-video overflow-hidden rounded-2xl border border-white/10">
+                          <img
+                            src={project.coverImage}
+                            alt={`${project.title} cover`}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+
                       {/* Top Row */}
                       <div className="mb-8 flex items-start justify-between">
                         <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-teal-400/15 bg-teal-400/10 text-teal-400 transition-transform duration-300 group-hover:scale-110">

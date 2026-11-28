@@ -1,5 +1,21 @@
-// import smartify1 from "../assets/projects/smartify-1.png";
-// import smartify2 from "../assets/projects/smartify-2.png";
+ import smartcity1 from "../assets/projects/smartcity360/dashboard.png";
+  import smartcity2 from "../assets/projects/smartcity360/security.png";
+ import smartcity3 from "../assets/projects/smartcity360/zone.png";
+ import smartcity4 from "../assets/projects/smartcity360/complaint.png";
+ import smartcity5 from "../assets/projects/smartcity360/streetlight.png";
+ import smartcity6 from "../assets/projects/smartcity360/policy.png";
+ import smartcitycover from "../assets/projects/smartcity360/smartcity360-cover.png";
+import globaltradecover from "../assets/projects/globaltrade/GlobalTradecoverimage.png";
+  import globaltrade1 from "../assets/projects/globaltrade/globaltrade1.png";
+  import globaltrade2 from "../assets/projects/globaltrade/globaltrade2.png";
+  import globaltrade3 from "../assets/projects/globaltrade/globaltrade3.png";
+  import globaltrade4 from "../assets/projects/globaltrade/globaltrade4.png";
+  import globaltrade5 from "../assets/projects/globaltrade/globaltrade5.png";
+    import globaltrade6 from "../assets/projects/globaltrade/globaltrade6.png";
+
+
+
+
 // import globaltrade1 from "../assets/projects/globaltrade-1.png";
 // import smartcity1 from "../assets/projects/smartcity-1.png";
 
@@ -58,8 +74,14 @@ export const projects = [
       "An enterprise supply chain management system built with a multi-module Jakarta EE architecture, automating shipments, warehouse inventory, customs clearance, and vendor tracking.",
     overview:
       "GlobalTrade centralizes end-to-end international trade operations across suppliers, purchase orders, shipments, warehouses, and customs clearance. Engineered as a multi-module Maven EAR application deployed on GlassFish 7 with PostgreSQL, it leverages EJB timers, asynchronous JMS messaging, container-managed transactions, and stateless JWT security for reliable enterprise workflows.",
+      coverImage: globaltradecover,
     images: [
-      // globaltrade1,
+      globaltrade1,
+      globaltrade2,
+      globaltrade3,
+      globaltrade4,
+      globaltrade5,
+      globaltrade6,
     ],
     technologies: [
       "Java",
@@ -101,8 +123,14 @@ export const projects = [
       "A modular JavaFX smart-city management suite applying five GoF Object-Oriented Design Patterns to solve urban energy security, power grid control, and policy evaluation.",
     overview:
       "SmartCity360 is a Java 17 and JavaFX desktop simulation built to demonstrate clean software architecture and reusable Object-Oriented Design Patterns in real-world urban infrastructure. Backed by SQLite persistence, each subsystem solves a distinct engineering challenge ranging from stream encryption and hierarchical grid control to memory optimization for thousands of IoT devices.",
+      coverImage: smartcitycover,
     images: [
-      // smartcity1,
+      smartcity1,
+      smartcity2,
+      smartcity3,
+      smartcity4,
+      smartcity5,
+      smartcity6,
     ],
     technologies: [
       "Java 17",
